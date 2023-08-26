@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=B612:ital@1&family=Belanosima:wght@400;600&family=Darker+Grotesque:wght@500;600;800&family=Karla&display=swap');
+
+html{
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 20px;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.recipe-brief{
+    background: rgb(79, 79, 79);
+    display: flex;
+    justify-content: center;
+    
+}
+
+.ingredients-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.recipe-detail{
+    border: solid 2px #fff;
+    padding: 10px;
+}
+
+a {
+    color: #fff;
+}
+
+.plate-svg {
+    margin-top: 12px;
+}
