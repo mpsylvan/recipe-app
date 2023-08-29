@@ -20,7 +20,6 @@ class RecipeModelTest(TestCase):
         recipe1 = Recipe.objects.create(
             name = "Popcorn",
             cooking_time = 5, 
-            difficulty = "Easy",
             
         )
 
@@ -38,12 +37,12 @@ class RecipeModelTest(TestCase):
         field_name = recipe1._meta.get_field('name').verbose_name
         self.assertEqual(field_name, 'name')
     
-    def test_recipe_difficulty_max_length(self):
+    def test_recipe_difficulty_calc(self):
         # pull the first recipe from the test db.
         recipe1 = Recipe.objects.get(id=1)
 
-        max_length = recipe1._meta.get_field('difficulty').max_length
-        self.assertEqual(max_length, 20)
+        recipe1_difficulty = recipe1.calc_difficulty()
+        self.assertEqual(recipe1.calc_difficulty(), 'Easy')
 
     def test_recipe_cooking_time_integer(self):
         # pull the first recipe from the test db.
@@ -56,3 +55,7 @@ class RecipeModelTest(TestCase):
         recipe1= Recipe.objects.get(id=1)
         many_to_many = recipe1._meta.get_field('ingredients').many_to_many
         self.assertTrue(many_to_many)
+
+    def test_recipe_absolute_url(self):
+        recipe1 = Recipe.objects.get(id=1)
+        self.assertEqual(recipe1.get_absolute_url(), '/list/1')   
