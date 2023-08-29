@@ -45,3 +45,8 @@ class IngredientModelTest(TestCase):
         max_length = ing1._meta.get_field('uom').max_length
 
         self.assertEqual(max_length, 20)
+    
+    def test_ingredients_absolute_url(self):
+
+        ing1 = Ingredient.objects.get(id=1)
+        self.assertEqual(ing1.get_absolute_url(), '/ingredients/list/1')
