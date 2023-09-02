@@ -22,6 +22,20 @@
         {{ form }}
         <button class="search-btn" type="submit">Submit</button>
     </form>
+    <div>
+        {% if df1 %}
+        {{ df1|safe }}
+        {% else %}
+        <p></p>
+        {% endif %}
+    </div>
+    <div>
+        {% if df2 %}
+        {{ df2|safe }}
+        {% else %}
+        <p></p>
+        {% endif %}
+    </div>
 </body>
 
 </html>
