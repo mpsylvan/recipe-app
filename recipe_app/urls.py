@@ -22,12 +22,12 @@ from .views import login_view, logout_view, success
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('recipes.urls')),
-    path('', include('ingredients.urls')),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
-    path('logged_out/', success, name='success')
+    path("admin/", admin.site.urls),
+    path("", include("recipes.urls")),
+    path("", include("ingredients.urls")),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
+    path("logged_out/", success, name="success"),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
