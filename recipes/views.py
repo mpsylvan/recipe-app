@@ -29,6 +29,8 @@ def records(request):
     form = RecipeSearchForm(request.POST or None)
     name = None
     chart_type = None
+    df1 = None
+    df2 = None
 
     if request.method == "POST":
         name = request.POST.get("name")
@@ -36,8 +38,11 @@ def records(request):
 
     if name == "a":
         qs = Recipe.objects.all()
-        for recipe in qs:
-            print(recipe.name)
+        if qs:
+            df1 = pd.DataFrame(qs.values())
+            df2 = pd.DataFrame(qs.values_list())
+            df1 = df1.to_html()
+            df2 = df2.to_html()
     elif name == "b":
         qs = Recipe.objects.all()
         for recipe in qs:
@@ -46,9 +51,7 @@ def records(request):
         qs = Recipe.objects.filter(name__contains="bake")
         for recipe in qs:
             print(recipe)
-    context = {
-        "form": form,
-    }
+    context = {"form": form, "df1": df1, "df2": df2}
 
     return render(request, "recipes/records.html", context)
 
