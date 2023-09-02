@@ -1,6 +1,11 @@
+{% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +13,13 @@
     <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}">
     <title>{{object.name}}</title>
 </head>
+
 <body>
     <img src="{% static 'ingredients/images/spices.jpg' %}" width="400" alt="spices array">
     <h2>{{object.name}}</h2>
     <h2>Common Unit of Measure: [{{object.uom}}]</h2>
+    <a href="{% url 'ingredients:ing' %}">Back to ingredients</a>
 </body>
+
 </html>
+{% endblock content %}

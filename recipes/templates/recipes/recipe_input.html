@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
-
 {% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,21 +8,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}">
-
+    <title>Recipe Input</title>
 </head>
 
 <body>
-    <h4>Search Recipe Records</h4>
-    <br>
-    <form style="display:flex;" method="post">
+    <h4>Input a new recipe</h4>
+    <form style="display:flex;" method="POST">
         {% csrf_token %}
         {{ form }}
-        <button class="search-btn" type="submit">Submit</button>
+        <button class="search-btn" type="submit">submit</button>
+    </form>
+    <h4>Add a new ingredient</h4>
+    <form style="display:flex;" method="POST">
+        {% csrf_token %}
+        {{ ingredient_form }}
+        <button class="search-btn" type="submit">submit</button>
     </form>
 </body>
 
 </html>
-
 {% endblock content %}

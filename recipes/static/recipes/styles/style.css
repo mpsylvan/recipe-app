@@ -1,36 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=B612:ital@1&family=Belanosima:wght@400;600&family=Darker+Grotesque:wght@500;600;800&family=Karla&display=swap');
 
-html{
+html {
     background-color: black;
     color: aliceblue;
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 20px;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
-}
-
-.ingredients-container{
+    height: 90vh;
     justify-content: center;
 }
 
-.recipe-brief{
+.ingredients-container {
+    justify-content: center;
+}
+
+.recipe-brief {
     background: rgb(79, 79, 79);
     display: flex;
     justify-content: center;
-    
+    padding: 5px;
+    margin: 5px;
+
 }
 
-.ingredients-list{
+.ingredients-list,
+.recipes-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.recipe-detail{
+.recipe-detail {
     border: solid 2px #fff;
     padding: 10px;
 }
@@ -41,4 +45,21 @@ a {
 
 .plate-svg {
     margin-top: 12px;
+}
+
+.search-btn {
+    background-color: rgb(245, 203, 66);
+    height: 30px;
+    border-radius: 2px;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 15px;
+    margin: 4px;
+}
+
+input {
+    height: 30px;
+}
+
+label {
+    margin: 4px;
 }

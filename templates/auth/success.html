@@ -1,6 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +12,12 @@
 
     <title>Document</title>
 </head>
+
 <body>
     <h1>You've successfully logged out. </h1>
     <h4>You can log back in</h4>
     <p><a href="{% url 'login'%}">HERE</a></p>
 </body>
+
 </html>
+{% endblock content %}

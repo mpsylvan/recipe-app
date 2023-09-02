@@ -11,3 +11,6 @@ class IngredientsList(LoginRequiredMixin, ListView):
 class IngredientsDetail(LoginRequiredMixin, DetailView):
     model = Ingredient
     template_name = 'ingredients/ingd.html'
+
+
+
