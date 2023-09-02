@@ -60,6 +60,9 @@ input {
     height: 30px;
 }
 
+th,
+td,
 label {
     margin: 4px;
+    text-align: center;
 }
