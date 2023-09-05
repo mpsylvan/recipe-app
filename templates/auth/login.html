@@ -2,25 +2,29 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}" />
     <title>Login to rcps</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <a href="{% url 'recipes:home'%}"
+      ><img
+        class="plate-svg"
+        src="{% static 'recipes/images/dishBW.svg' %}"
+        height="30"
+        alt=""
+      />
+    </a>
+
     <h1>Welcome to recipe login</h1>
-    {% if error_message %}
-    {{ error_message }}
-    {% endif %}
+    {% if error_message %} {{ error_message }} {% endif %}
     <form action="" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Login</button>
+      {% csrf_token %} {{ form }}
+      <button type="submit">Login</button>
     </form>
-</body>
-
+  </body>
 </html>
