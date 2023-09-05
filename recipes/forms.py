@@ -4,30 +4,23 @@ from ingredients.models import Ingredient
 
 
 CONTENT_CHOICES = (
-    ("a", "Recipes"),
-    ("b", "CookingTime"),
-    ("c", "Difficulty"),
-    ("d", "Ingredients"),
+    ("#1", "Recipes (cooktime line graph)"),
+    ("#2", "Ingredients (frequency wheel)"),
+    ("#3", "Difficulty (bar graph)"),
 )
 
-CHART_CHOICES = (
-    ("a", "Bar"),
-    ("b", "Graph"),
-    ("c", "Line"),
-)
+# CHART_CHOICES = (
+#     ("a", "Bar"),
+#     ("b", "Graph"),
+#     ("c", "Line"),
+# )
 
 
 class RecipeSearchForm(forms.Form):
     name = forms.ChoiceField(choices=CONTENT_CHOICES)
-    chart_type = forms.ChoiceField(choices=CHART_CHOICES)
-
-
-class RecipeInputForm(forms.Form):
-    name = forms.CharField(max_length=20)
-    cooking_time = forms.IntegerField(min_value=1)
-    ingredients = forms.ModelMultipleChoiceField(Ingredient.objects.all())
-
-
-class IngredientInputForm(forms.Form):
-    new_ingredient_name = forms.CharField(max_length=50)
-    new_ingredient_UOM = forms.ChoiceField(choices=Ingredient.units_of_measure)
+    # chart_type = forms.ChoiceField(choices=CHART_CHOICES)
+    ingredients_limit = forms.IntegerField(
+        help_text="(^leave blank to display all recipes, minimum results is 5)",
+        required=False,
+        min_value=5,
+    )
