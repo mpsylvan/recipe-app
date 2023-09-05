@@ -9,19 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}">
-    <title>Recipe Input</title>
+    <title>Ingredient Input</title>
 </head>
 
 <body>
-    <h2>New Recipe</h2>
-
+    <h2>New Ingredient</h2>
     <form method="post" action="">
         {% csrf_token %}
         {{ form.as_p}}
-        <a href="{% url 'ingredients:ingredient-input' %}">
-            <h4>++ Ingredient</h4>
-        </a>
-        <button class="search-btn" type="submit">Save Recipe</button>
+        <button class="search-btn" type="submit">Save Ingredient</button>
     </form>
 </body>
 
