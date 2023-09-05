@@ -1,68 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=B612:ital@1&family=Belanosima:wght@400;600&family=Darker+Grotesque:wght@500;600;800&family=Karla&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=B612:ital@1&family=Belanosima:wght@400;600&family=Darker+Grotesque:wght@500;600;800&family=Karla&display=swap");
 
 html {
-    background-color: black;
-    color: aliceblue;
-    font-family: 'Darker Grotesque', sans-serif;
-    font-size: 20px;
+  background-color: black;
+  color: aliceblue;
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 20px;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 90vh;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+header {
+  position: relative;
+  top: 5
+}
+
+.login-logout {
+  color: rgb(245, 203, 66);
+  margin-top: 30px;
 }
 
 .ingredients-container {
-    justify-content: center;
+  justify-content: center;
 }
 
 .recipe-brief {
-    background: rgb(79, 79, 79);
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    margin: 5px;
-
+  background: rgb(134, 121, 121);
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
 }
 
 .ingredients-list,
 .recipes-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  overflow-y: auto;
 }
 
 .recipe-detail {
-    border: solid 2px #fff;
-    padding: 10px;
+  border: solid 2px #fff;
+  padding: 10px;
 }
 
 a {
-    color: #fff;
+  color: #fff;
 }
 
 .plate-svg {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 .search-btn {
-    background-color: rgb(245, 203, 66);
-    height: 30px;
-    border-radius: 2px;
-    font-family: 'Darker Grotesque', sans-serif;
-    font-size: 15px;
-    margin: 4px;
+  background-color: rgb(245, 203, 66);
+  height: 30px;
+  border-radius: 2px;
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 15px;
+  margin: 4px;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50% ;
+}
+
+#id_ingredients, #id_uom {
+  background-color: rgb(0, 0, 0);
+  color: rgb(245, 203, 66);
+  height: 150px;
+  width: 150px;
+}
+
+#id_uom{
+  height: 30px;
+  width: 200px;
+  font-family: "Darker Grotesque", sans-serif;
+}
+option{
+  
+  font-family: "Darker Grotesque", sans-serif;
+}
 input {
-    height: 30px;
+  height: 30px;
+}
+
+.records-output {
+  display: flex;
+  justify-content: center;
+}
+
+.records-output > * {
+  margin: 15px;
 }
 
 th,
 td,
 label {
-    margin: 4px;
-    text-align: center;
+  margin: 4px;
+  text-align: center;
 }
+
