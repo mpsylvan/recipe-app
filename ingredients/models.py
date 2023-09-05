@@ -20,6 +20,7 @@ class Ingredient(models.Model):
         ("wedge", "Wedge"),
         ("pinch", "Pinch"),
         ("lb", "Pound"),
+        ("lf", "Leaf"),
     )
 
     name = models.CharField(max_length=50)
@@ -33,9 +34,3 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-
-    # ingredients = forms.ModelMultipleChoiceField(Ingredient.objects.all())
-    # add_ingredient_name = forms.CharField(max_length=50)
-    # add_ingredient_uom = forms.ChoiceField(ingredient_choices)
-    # for uom in uoms:
-    # uoms_choices = ((uom, uom),) + uoms_choices
