@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 from ingredients.models import Ingredient
-from .forms import RecipeInputForm, IngredientInputForm, RecipeSearchForm
+from .forms import RecipeSearchForm
 import pandas as pd
+from .utils import get_chart
 
 # Create your views here.
 
@@ -27,45 +28,51 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
 @login_required
 def records(request):
     form = RecipeSearchForm(request.POST or None)
-    name = None
-    chart_type = None
-    df1 = None
-    df2 = None
+    chart = None
+    df = None
 
     if request.method == "POST":
         name = request.POST.get("name")
-        chart_type = request.POST.get("chart_type")
+        limit = request.POST.get("ingredients_limit")
+        # chart_type = request.POST.get("chart_type")
+        qs_recipes = Recipe.objects.all()
+        qs_ingredients = Ingredient.objects.all()
+        if qs_recipes and qs_ingredients:
+            if name == "#1":
+                df = pd.DataFrame(qs_recipes.values())
+                chart = get_chart("a", df, labels=df["name"].values)
+                df = df.to_html()
 
-    if name == "a":
-        qs = Recipe.objects.all()
-        if qs:
-            df1 = pd.DataFrame(qs.values())
-            df2 = pd.DataFrame(qs.values_list())
-            df1 = df1.to_html()
-            df2 = df2.to_html()
-    elif name == "b":
-        qs = Recipe.objects.all()
-        for recipe in qs:
-            print(recipe.cooking_time)
-    elif name == "c":
-        qs = Recipe.objects.filter(name__contains="bake")
-        for recipe in qs:
-            print(recipe)
-    context = {"form": form, "df1": df1, "df2": df2}
+            elif name == "#2":
+                ingredients_to_quantity = ()
+                for ingredient in qs_ingredients:
+                    ingredients_to_quantity = (
+                        (ingredient.name, len(ingredient.recipe_set.all())),
+                    ) + ingredients_to_quantity
+                df = pd.DataFrame(
+                    ingredients_to_quantity, columns=["name", "recipes_in"]
+                ).sort_values("recipes_in", ascending=False)
+                if limit:
+                    df = df[: int(limit)]
+                chart = get_chart("b", df, labels=df["name"].values)
+                df = None
+            elif name == "#3":
+                df = pd.DataFrame(qs_recipes.values())
+                df["difficulty"] = [object.calc_difficulty() for object in qs_recipes]
+                difficulties = df["difficulty"].value_counts()
+                chart = get_chart("c", difficulties)
+                df = df.to_html()
+            else:
+                print("working on it. ")
+    else:
+        print("issue with post request. ")
+
+    context = {"form": form, "df": df, "chart": chart}
 
     return render(request, "recipes/records.html", context)
 
 
-@login_required
-def recipe_input(request):
-    form = RecipeInputForm(request.POST or None)
-    ingredient_form = IngredientInputForm(request.POST or None)
-
-    # if request.method == "POST":
-    #     name = request.POST.get("name")
-    #     cooking_time = request.POST.get("cooking_time")
-    #     ingredients = request.POST.get("ingredients")
-    #     new_ingredient = request.POST.get("add_ingredient_name")
-
-    context = {"form": form, "ingredient_form": ingredient_form}
-    return render(request, "recipes/recipe_input.html", context)
+class RecipeInput(LoginRequiredMixin, CreateView):
+    model = Recipe
+    template_name = "recipes/recipe_input.html"
+    fields = ["name", "cooking_time", "ingredients"]
