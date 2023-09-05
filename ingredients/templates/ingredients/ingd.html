@@ -19,6 +19,22 @@
     <h2>{{object.name}}</h2>
     <h2>Common Unit of Measure: [{{object.uom}}]</h2>
     <a href="{% url 'ingredients:ing' %}">Back to ingredients</a>
+    <a href="{% url 'recipes:recipe-input' %}">++ Recipe</a>
+    <a href="{% url 'ingredients:ingredient-input' %}">++ Ingredient</a>
+    <br>
+    <h2>
+        Used in :
+    </h2>
+    <h3>
+        {%if object.recipe_set.all %}
+        {% for object in object.recipe_set.all %}
+        <a href="{{object.get_absolute_url}}">-- {{ object}} --</a>
+        {%endfor%}
+        {% else %}
+        <p>no usage yet.</p>
+        {% endif %}
+    </h3>
+    </ul>
 </body>
 
 </html>
