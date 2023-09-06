@@ -22,10 +22,10 @@
     <a href="{% url 'recipes:recipe-input' %}">++ Recipe</a>
     <a href="{% url 'ingredients:ingredient-input' %}">++ Ingredient</a>
     <br>
+    <h2>
+        Used in :
+    </h2>
     <div class="used-in-container">
-        <h2>
-            Used in :
-        </h2>
         <h3 class="recipe-brief">
             {%if object.recipe_set.all %}
             {% for object in object.recipe_set.all %}
