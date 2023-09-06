@@ -39,7 +39,7 @@ header {
 }
 
 .ingredients-list,
-.recipes-list {
+.recipes-list, .used-in-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   overflow-y: auto;
