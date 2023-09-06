@@ -26,9 +26,9 @@
         Used in :
     </h2>
     <div class="used-in-container">
+        {%if object.recipe_set.all %}
+        {% for object in object.recipe_set.all %}
         <div class="recipe-brief">
-            {%if object.recipe_set.all %}
-            {% for object in object.recipe_set.all %}
             <a href="{{object.get_absolute_url}}">{{ object}}</a>
             {%endfor%}
             {% else %}
