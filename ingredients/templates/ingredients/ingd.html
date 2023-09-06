@@ -30,11 +30,11 @@
         {% for object in object.recipe_set.all %}
         <div class="recipe-brief">
             <a href="{{object.get_absolute_url}}">{{ object}}</a>
-            {%endfor%}
-            {% else %}
-            <p>no usage yet.</p>
-            {% endif %}
         </div>
+        {%endfor%}
+        {% else %}
+        <p>no usage yet.</p>
+        {% endif %}
     </div>
 
 </body>
