@@ -29,6 +29,7 @@ class Ingredient(models.Model):
     )  # unit of measure
     pic = models.ImageField(upload_to="ingredients", default="drawing.svg")
 
+    # builds an absolute path to a specific ingredient utlizing the name url param and the db primary of each ingredient.
     def get_absolute_url(self):
         return reverse("ingredients:ingd", kwargs={"pk": self.pk})
 
