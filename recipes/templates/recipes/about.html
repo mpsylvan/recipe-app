@@ -1,13 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<html lang="en">
 
-<div>
-    <h4>About developer: </h4>
-    <p>Based in BK, NY</p>
-    <p>Graduated from Career Foundry Full Stack Program in 2023</p>
-    <p><a href="https://github.com/mpsylvan/recipe-app">Link to project github</a></p>
-    <p><a href="https://mpsylvan.github.io/portfolio-site/">Link to portfolio</a></p>
-</div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'recipes/styles/style.css'%}">
+    <title>Recipes </title>
+</head>
+
+
+<body>
+    <div>
+        <h4>About developer: </h4>
+        <p>Based in BK, NY</p>
+        <p>Graduated from Career Foundry Full Stack Program in 2023</p>
+        <p><a href="https://github.com/mpsylvan/recipe-app">Link to project github</a></p>
+        <p><a href="https://mpsylvan.github.io/portfolio-site/">Link to portfolio</a></p>
+    </div>
+
+</body>
 
 {% endblock content %}
+
+</html>
