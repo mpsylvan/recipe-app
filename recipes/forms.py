@@ -18,4 +18,5 @@ class RecipeSearchForm(forms.Form):
         required=False,
         min_value=5,
         max_value=20,
+        default=10,
     )
