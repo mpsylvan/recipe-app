@@ -25,8 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # obsolete secret key just to initialize env variable.
 
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    os.getenv("SECRET_KEY"),
+)
 
-SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
