@@ -10,13 +10,16 @@ class Recipe(models.Model):
     cooking_time = models.PositiveIntegerField(help_text="(minutes)")
     ingredients = models.ManyToManyField(Ingredient, blank=True)
 
+    # builds an aboslute url to provide linkage to the specific recipe
     def get_absolute_url(self):
         return reverse("recipes:detail", kwargs={"pk": self.pk})
 
+    # access a query set of all ingredients to be able to display the ingredients on a details page.
     def get_ingredients(self):
         ingredient_objects = self.ingredients.all()
         return ingredient_objects
 
+    # evaluates the difficulty of a recipe by checking ingredients length and cooking time against conditions.
     def calc_difficulty(self):
         new_difficulty = ""
         ingredients = self.get_ingredients()
